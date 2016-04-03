@@ -6,7 +6,10 @@ var expressJWT = require("express-jwt");
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcrypt");
 
+// var secret = process.env.SECRET;
+
 // var mongoose = require("mongoose");
+// var User = require("./models/user");
 // mongoose.connect("mongodb://localhost/foodtakes");
 
 app.use(bodyParser.json());
