@@ -36,3 +36,14 @@ angular.module("FoodTakesCtrls", ["AuthServices"])
         });
     };
 }])
+.controller('NavCtrl', ['$scope', 'Auth', '$state', 'Alerts', function($scope, Auth, $state, Alerts) {
+  $scope.Auth = Auth;
+
+  $scope.logout = function() {
+    //to implement
+    Auth.removeToken();
+    // $location.path('/');
+    $state.reload();
+    Alerts.add('warning', 'Logged out!');
+  }
+}])

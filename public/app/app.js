@@ -8,7 +8,7 @@ angular.module("FoodTakesApp", ["ui.router", "FoodTakesCtrls"])
 		$stateProvider
 		.state("home", {
 			url: "/",
-			templateUrl: "app/views/main.html",
+			templateUrl: "app/views/welcome.html",
 			controller: "MainCtrl",
 		})
 		.state("signup", {
