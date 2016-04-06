@@ -5,11 +5,22 @@ var app = express();
 var expressJWT = require("express-jwt");
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcrypt");
+var cloudinary = require("cloudinary");
+var Yelp = require("yelp");
 
 var secret = process.env.SECRET;
 
+var yelp = new Yelp({
+	consumer_key: process.env.YELP_API_CONSUMER_KEY,
+	consumer_secret: process.env.YELP_API_CONSUMER_SECRET,
+	token: process.env.YELP_API_TOKEN,
+	token_secret: process.env.YELP_API_TOKEN_SECRET
+})
+
 var mongoose = require("mongoose");
 var User = require("./models/user");
+var Place = require("./models/place");
+var Review = require("./models/review");
 mongoose.connect("mongodb://localhost/foodtakes");
 
 app.use(bodyParser.json());
@@ -20,6 +31,8 @@ app.use("/users", expressJWT({secret: secret}).unless({path: ["/users"], method:
 
 app.use("/users", require("./controllers/users"));
 app.use("/auth", require("./controllers/auth"));
+app.use("/reviews", require("./controllers/reviews"));
+app.use("/search", require("./controllers/search"));
 
 app.get("/*", function(req, res) {
 	res.sendFile(path.join(__dirname + "/public/index.html"));

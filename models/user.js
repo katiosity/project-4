@@ -6,6 +6,8 @@ var UserSchema = mongoose.Schema({
 	alias: String,
 	email: String,
 	password: String,
+	places: [{type: mongoose.Schema.Types.ObjectId, ref: "Place"}],
+	reviews: [{type: mongoose.Schema.Types.ObjectId, ref: "Review"}],
 });
 
 UserSchema.set("toJSON", {

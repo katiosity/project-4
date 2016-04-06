@@ -1,15 +1,15 @@
-angular.module("FoodTakesApp", ["ui.router", "FoodTakesCtrls"])
+angular.module("FoodTakesApp", ["ui.router", "FoodTakesCtrls", "ui.bootstrap", "ngRoute"])
 
-.config(["$stateProvider", "$urlRouterProvider", "$locationProvider",
-	function($stateProvider, $urlRouterProvider, $locationProvider) {
+.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", "$routeProvider",
+	function($stateProvider, $urlRouterProvider, $locationProvider, $routeProvider) {
 		
 		$urlRouterProvider.otherwise("/");
 
 		$stateProvider
-		.state("home", {
-			url: "/",
+		.state("welcome", {
+			url: "/welcome",
 			templateUrl: "app/views/welcome.html",
-			controller: "MainCtrl",
+			controller: "NavCtrl",
 		})
 		.state("signup", {
 			url: "/signup",
@@ -20,6 +20,21 @@ angular.module("FoodTakesApp", ["ui.router", "FoodTakesCtrls"])
 			url: "/login",
 			templateUrl: "app/views/login.html",
 			controller: "LoginCtrl"
+		})
+		.state("dashboard", {
+			url: "/dashboard",
+			templateUrl: "app/views/userDashboard.html",
+			controller: "DashboardCtrl"
+		})
+		.state("newReview", {
+			url: "/reviews/new/:id",
+			templateUrl: "app/views/newReview.html",
+			controller: "RatingsCtrl",
+		})
+		.state("searchPlaces", {
+			url: "/restaurants/search",
+			templateUrl: "app/views/placeSearch.html",
+			controller: "SearchPlacesCtrl"
 		})
 
 		$locationProvider.html5Mode(true);
