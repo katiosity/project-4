@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public/'));
 
-app.use("/users", expressJWT({secret: secret}).unless({path: ["/users", "/"], method: "post"}));
+app.use("/users", expressJWT({secret: secret}).unless({path: ["/users"], method: "post"}));
 
 app.use("/users", require("./controllers/users"));
 app.use("/places", require("./controllers/places"));
