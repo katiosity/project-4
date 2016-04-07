@@ -7,7 +7,7 @@ angular.module("FoodTakesApp", ["ui.router", "FoodTakesCtrls", "ui.bootstrap", "
 
 		$stateProvider
 		.state("welcome", {
-			url: "/welcome",
+			url: "/",
 			templateUrl: "app/views/welcome.html",
 			controller: "NavCtrl",
 		})
