@@ -13,8 +13,6 @@
 	<div class="well" ng-repeat="result in results track by $index">
 		<h1>{{result.name}}</h1>
 
-		<a href="/reviews/new/{{result.id}}" class="btn btn-primary">Add review</a>
-
-
+		<a href="/reviews/new/{{result.id}}" class="btn btn-primary" ng-click="moreDetails(result)">Add review</a>
 	</div>
 </div>

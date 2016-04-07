@@ -15,7 +15,7 @@ var yelp = new Yelp({
 	consumer_secret: process.env.YELP_API_CONSUMER_SECRET,
 	token: process.env.YELP_API_TOKEN,
 	token_secret: process.env.YELP_API_TOKEN_SECRET
-})
+});
 
 var mongoose = require("mongoose");
 var User = require("./models/user");
@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public/'));
 
-app.use("/users", expressJWT({secret: secret}).unless({path: ["/users"], method: "post"}));
+// app.use("/users", expressJWT({secret: secret}).unless({path: ["/users"], method: "post"}));
 
 app.use("/users", require("./controllers/users"));
 app.use("/auth", require("./controllers/auth"));

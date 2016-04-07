@@ -1,4 +1,5 @@
 angular.module('AuthServices', [])
+
 .factory("Auth", ["$window", function($window) {
 	return {
 		saveToken: function(token) {

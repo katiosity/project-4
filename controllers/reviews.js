@@ -1,6 +1,15 @@
 var express = require('express');
 var Review = require('../models/review');
 var router = express.Router();
+var Yelp = require("yelp");
+var request = require("request");
+
+var yelp = new Yelp({
+  consumer_key: process.env.YELP_API_CONSUMER_KEY,
+  consumer_secret: process.env.YELP_API_CONSUMER_SECRET,
+  token: process.env.YELP_API_TOKEN,
+  token_secret: process.env.YELP_API_TOKEN_SECRET
+});
 
 router.get('/', function(req, res) {
   Review.find(function(err, reviews) {
@@ -11,6 +20,7 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
   var review = new Review(req.body);
+  console.log(req.body);
   review.save(function(err) {
     if (err) return res.send({message: 'Error - Could not create review'});
     res.send(review);
@@ -48,5 +58,17 @@ router.delete('/:id', function(req, res) {
     res.send({message: 'Review deleted'});
   });
 });
+
+// router.post("/new/:id", function(req, res) {
+//   var id = req.body.id;
+
+//   yelp.search({id: name, location: location})
+//   .then(function (data) {
+//     res.json(data);
+//   })
+//   .catch(function (err) {
+//     console.log(err);
+//   });
+// })
 
 module.exports = router;

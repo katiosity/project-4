@@ -2,7 +2,8 @@ var mongoose = require("mongoose");
 
 var PlaceSchema = mongoose.Schema({
 	name: String,
-	address: String,
+	addressLine1: String,
+	addressLine2: String,
 	reviews: [{type: mongoose.Schema.Types.ObjectId, ref: "Review"}],
 });
 
@@ -11,7 +12,8 @@ PlaceSchema.set("toJSON", {
 		var returnJson = {
 			id: ret._id,
 			name: name,
-			address: address
+			addressLine1: addressLine1,
+			addressLine2: addressLine2
 		};
 		return returnJson;
 	}

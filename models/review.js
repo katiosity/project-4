@@ -5,7 +5,8 @@ var ReviewSchema = mongoose.Schema({
 	drinks: Number,
 	service: Number,
 	atmosphere: Number,
-	image: String,
+	imageUrl: String,
+	imageDescription: String,
 	review: String,
 	user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
 	place: {type: mongoose.Schema.Types.ObjectId, ref: "Place"}
@@ -20,7 +21,9 @@ ReviewSchema.set("toJSON", {
 			service: ret.service,
 			atmosphere: ret.atmosphere,
 			image: ret.image,
-			review: ret.review
+			review: ret.review,
+			imageUrl: ret.imageUrl,
+			imageDescription: ret.imageDescription
 		};
 		return returnJson;
 	}
