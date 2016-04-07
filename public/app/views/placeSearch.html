@@ -12,7 +12,10 @@
 <div>
 	<div class="well" ng-repeat="result in results track by $index">
 		<h1>{{result.name}}</h1>
+		<p>{{result.location.display_address[0]}}</p>
+		<p>{{result.location.display_address[2]}}</p>
 
 		<a href="/reviews/new/{{result.id}}" class="btn btn-primary" ng-click="moreDetails(result)">Add review</a>
+		<a href="" class="btn btn-primary">See reviews</a>
 	</div>
 </div>

@@ -23,7 +23,9 @@ ReviewSchema.set("toJSON", {
 			image: ret.image,
 			review: ret.review,
 			imageUrl: ret.imageUrl,
-			imageDescription: ret.imageDescription
+			imageDescription: ret.imageDescription,
+			user: ret.user,
+			place: ret.place
 		};
 		return returnJson;
 	}

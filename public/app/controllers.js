@@ -1,4 +1,4 @@
-angular.module("FoodTakesCtrls", ["AuthServices", "ngAnimate"])
+angular.module("FoodTakesCtrls", ["AuthServices", "ngAnimate", "ngRoute"])
 
 // .controller("MainCtrl", ["$scope", "Auth", function($scope, Auth) {
 // 	$scope.logout = function() {
@@ -19,7 +19,7 @@ angular.module("FoodTakesCtrls", ["AuthServices", "ngAnimate"])
 		$http.post("/users", $scope.user).then(function success(res) {
 			console.log(res);
 			$rootScope.userName = res.data.alias;
-			$location.path("/");
+			$location.path("/dashboard");
 		}, function error(res) {
 			console.log(res);
 		});
@@ -33,7 +33,6 @@ angular.module("FoodTakesCtrls", ["AuthServices", "ngAnimate"])
     $scope.actionName = 'Login';
     $scope.login = function(){
         $http.post('/auth', $scope.user).then(function success(res){
-        	// console.log(res);
             Auth.saveToken(res.data.token);
             $rootScope.user = res.data;
             console.log($rootScope.user);
@@ -53,8 +52,7 @@ angular.module("FoodTakesCtrls", ["AuthServices", "ngAnimate"])
 }])
 
 .controller("RatingsCtrl", ["$scope", "$stateParams", "$rootScope", "$http", "$location", function($scope, $stateParams, $rootScope, $http, $location) {
-	// console.log($stateParams);
-	// console.log($rootScope.results);
+
 	$scope.rate = 0;
 	$scope.max = 5;
 	$scope.isReadonly = false;
@@ -64,8 +62,14 @@ angular.module("FoodTakesCtrls", ["AuthServices", "ngAnimate"])
 		$scope.percent = 100 * (value / $scope.max);
 	};
 
+	$scope.place = {
+		name: $rootScope.results.name,
+		addressLine1: $rootScope.results.location.display_address[0],
+		addressLine2: $rootScope.results.location.display_address[2], 
+	};
+
 	$scope.review = {
-		// place: "",
+		place: "",
 		imageUrl: "",
 		imageDescription: "",
 		review: "",
@@ -75,21 +79,22 @@ angular.module("FoodTakesCtrls", ["AuthServices", "ngAnimate"])
 		atmosphere: 0
 	};
 
+	console.log($scope.review);
+	$scope.body = {
+		place: $scope.place,
+		review: $scope.review
+	}
 	$scope.submitReview = function() {
-		console.log($scope.review);
-		
-		$http.post("/reviews", $scope.review).then(function success(res) {
-			console.log(res.data);
-			$location.path("/dashboard");
+		$http.post("/reviews", $scope.body).then(function success(res) {
+				console.log("Place & review created");
+				console.log(res);
 		}, function error(res) {
 			console.log(res.data);
-		})
-		
+		});
 	};
-
 }])
 
-.controller("SearchPlacesCtrl", ["$scope", "$http", "$rootScope", function($scope, $http, $rootScope) {
+.controller("SearchPlacesCtrl", ["$scope", "$http", "$rootScope", "$location", function($scope, $http, $rootScope, $location) {
 	$scope.searchTerms = {
 		name: '',
 		location: ''
@@ -105,9 +110,9 @@ angular.module("FoodTakesCtrls", ["AuthServices", "ngAnimate"])
 	$scope.search = function() {
 		$http.post("/search", $scope.searchTerms).then(function success(res) {
 			$scope.results = res.data.businesses;
-			console.log($scope.results);
 		}, function error(res) {
 			console.log(res);
 		});
-	}
+	};
+
 }])

@@ -3,21 +3,24 @@
 	<h2>{{results.name}}</h2>
 	<p>{{results.location.display_address[0]}}</p>
 	<p>{{results.location.display_address[2]}}</p>
+	{{results.id}}
 </div>
 
 <form enctype="multipart/form-data" ng-submit="submitReview()">
 
+<!-- 	<input type="hidden" value="{{results.name}}" ng-model="place.name">
+	<input type="hidden" value="{{results.location.display_address[0]}}" ng-model="place.addressLine1">
+	<input type="hidden" value="{{results.location.display_address[2]}}" ng-model="place.addressLine2"> -->
+
 	<legend>New restaurant review</legend>
 
-	<input type="hidden" value="{{results.id}}" ng-model="review.place">
-
 	<div class="form-group">
-		<label for="file">Upload a foodograph from this restaurant</label>
+		<label for="file">Upload a photograph</label>
 		<input type="file" name="file" ng-model="review.imageUrl">
 	</div>
 
 	<div class="form-group">
-		<label for="img-details">Brief foodograph description</label>
+		<label for="img-details">Photograph description</label>
 		<input type="text" name="img-details" ng-model="review.imageDescription">
 	</div>
 
@@ -84,7 +87,6 @@
 					titles="['one','two','three', 'four', 'five']"
 					aria-labelledby="default-rating">
 				</uib-rating>
-				service: {{review.service}}
 				<span
 					class="label"
 					ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
@@ -108,7 +110,6 @@
 					aria-labelledby="default-rating"
 					>
 				</uib-rating>
-				<span>atmosphere: {{ review.atmosphere }}</span>
 				<span
 					class="label"
 					ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
