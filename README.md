@@ -11,10 +11,16 @@ A better Instagram/Yelp app for rating restaurants and posting food pics. Rate r
 * [Node.js](https://nodejs.org/en/)
 * [Express.js](http://expressjs.com/)
 * [MongoDB](https://www.mongodb.org/)
+* [JSON Web Tokens (JWT)](https://jwt.io/)
 * [Yelp API](https://www.npmjs.com/package/yelp)
 * [Bootstrap](http://getbootstrap.com/)
 * [UI Bootstrap](https://angular-ui.github.io/bootstrap/)
 * [Pixabay](https://pixabay.com/)
 
-### Known Issues
+### Works in Progress
+
+* Show page for all restaurant reviews with filter options
+* Improved user authentication with JWT and custom user dashboards
+* Photo gallery for food pics using Cloudinary
+* Database association of users to reviews
 
