@@ -36,6 +36,10 @@ angular.module("FoodTakesApp", ["ui.router", "FoodTakesCtrls", "ui.bootstrap", "
 			templateUrl: "app/views/placeSearch.html",
 			controller: "SearchPlacesCtrl"
 		})
+		.state("showReviews", {
+			url:"/restaurants/reviews",
+			templateUrl: "app/views/showReviews.html"
+		})
 
 		$locationProvider.html5Mode(true);
 }])

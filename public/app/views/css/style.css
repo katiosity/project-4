@@ -1,55 +1,35 @@
-.rating {
-    float:left;
+#welcome-header {
+    font-size: 100px;
 }
 
-/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
-   follow these rules. Every browser that supports :checked also supports :not(), so
-   it doesn’t make the test unnecessarily selective */
-.rating:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-    clip:rect(0,0,0,0);
+#welcome-subheader {
+    font-size: 80px;
+    font-weight: 100;
 }
 
-.rating:not(:checked) > label {
-    float:right;
-    width:1em;
-    padding:0 .1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:200%;
-    line-height:1.2;
-    color:#ddd;
-    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+#signup-btn {
+    border-radius: 0;
+    border: none;
+    font-size: 30px;
+    background-color: orange;
+    color: white;
 }
 
-.rating:not(:checked) > label:before {
-    content: '★ ';
+#welcome-page {
+    background-image: url("./images/food-table.jpg");
+/*    padding-top: 30px;*/
+    background-repeat: no-repeat;
+    height: 450px;
+    text-align: center;
+    color: white;
 }
 
-.rating > input:checked ~ label {
-    color: #f70;
-    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+#welcome-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 450px;
 }
 
-.rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label {
-    color: gold;
-    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
-}
-
-.rating > input:checked + label:hover,
-.rating > input:checked + label:hover ~ label,
-.rating > input:checked ~ label:hover,
-.rating > input:checked ~ label:hover ~ label,
-.rating > label:hover ~ input:checked ~ label {
-    color: #ea0;
-    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
-}
-
-.rating > label:active {
-    position:relative;
-    top:2px;
-    left:2px;
+#navbar-brand {
+    height: 40px;
+    width: auto;
 }
