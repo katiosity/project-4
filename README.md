@@ -16,6 +16,7 @@ A better Instagram/Yelp app for rating restaurants and posting food pics. Rate r
 * [Yelp API](https://www.npmjs.com/package/yelp)
 * [Bootstrap](http://getbootstrap.com/)
 * [UI Bootstrap](https://angular-ui.github.io/bootstrap/)
+* [Google Fonts](https://www.google.com/fonts#)
 * [Pixabay](https://pixabay.com/)
 
 ### Works in Progress
